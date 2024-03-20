@@ -1,0 +1,42 @@
+
+<div class="mb-3">
+  <h4>Criação de conta de usuário</h4>
+  <p>Preencha os campos para cadastrar sua conta de acesso.</p>
+</div>
+
+<form [formGroup]="formCreate" (ngSubmit)="onSubmit()">
+<div class="row mb-3">
+  <div class="col">
+    <label>Nome:</label>
+    <input type="text" class="form-control" formControlName="nome" placeholder="Digite seu nome aqui." />
+  </div>
+  <div class="col">
+    <label>Nome do usuário:</label>
+    <input type="text" class="form-control" formControlName="login" placeholder="Digite seu nome de usuario." />
+  </div>
+  <div class="col">
+    <label>Telefone:</label>
+    <input type="tel" pattern="[0-9]*" class="form-control" formControlName="telefone" placeholder="Digite seu telefone" />
+  </div>
+  <div class="col">
+    <label>Email de acesso:</label>
+    <input type="text" class="form-control" formControlName="email" placeholder="Digite seu email aqui." />
+  </div>
+  <div class="col">
+    <label>Senha de acesso:</label>
+    <input type="password" class="form-control" formControlName="senha" placeholder="Digite sua senha aqui." />
+  </div>
+  <div class="col">
+    <label>Confirme sua senha:</label>
+    <input type="password" class="form-control" formControlName="senhaConf" placeholder="Confirme sua senha aqui." />
+  </div>
+  <div class="row mb-3">
+  </div>
+
+  <div class="col">
+    <button class="btn btn-success">
+      Realizar Cadastro
+    </button>
+  </div>
+</div>
+</form>

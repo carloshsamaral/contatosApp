@@ -1,0 +1,26 @@
+<form [formGroup]="formAuth" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <h4>Autenticação de usuários</h4>
+    <p>Entre com as suas credenciais de acesso.</p>
+  </div>
+  <!-- linha -->
+  <div class="row mb-3">
+    <div class="col">
+      <label>Usuário:</label>
+      <input type="text" class="form-control" formControlName="usuario" placeholder="Digite seu email aqui." />
+    </div>
+    <div class="col">
+      <label>Senha de acesso:</label>
+      <input type="password" class="form-control" formControlName="senha" placeholder="Digite sua senha aqui." />
+    </div>
+    <div class="col">
+      <button class="btn btn-primary mt-4">
+        Acessar Sistema
+      </button>
+    </div>
+  </div>
+</form>
+
+<div class="row mb-3">
+  <small>Sistema de gerenciamento de tarefas v1.0</small>
+</div>
