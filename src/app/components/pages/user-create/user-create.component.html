@@ -1,42 +1,76 @@
-
 <div class="mb-3">
   <h4>Criação de conta de usuário</h4>
   <p>Preencha os campos para cadastrar sua conta de acesso.</p>
 </div>
 
 <form [formGroup]="formCreate" (ngSubmit)="onSubmit()">
-<div class="row mb-3">
-  <div class="col">
-    <label>Nome:</label>
-    <input type="text" class="form-control" formControlName="nome" placeholder="Digite seu nome aqui." />
-  </div>
-  <div class="col">
-    <label>Nome do usuário:</label>
-    <input type="text" class="form-control" formControlName="login" placeholder="Digite seu nome de usuario." />
-  </div>
-  <div class="col">
-    <label>Telefone:</label>
-    <input type="tel" pattern="[0-9]*" class="form-control" formControlName="telefone" placeholder="Digite seu telefone" />
-  </div>
-  <div class="col">
-    <label>Email de acesso:</label>
-    <input type="text" class="form-control" formControlName="email" placeholder="Digite seu email aqui." />
-  </div>
-  <div class="col">
-    <label>Senha de acesso:</label>
-    <input type="password" class="form-control" formControlName="senha" placeholder="Digite sua senha aqui." />
-  </div>
-  <div class="col">
-    <label>Confirme sua senha:</label>
-    <input type="password" class="form-control" formControlName="senhaConf" placeholder="Confirme sua senha aqui." />
-  </div>
   <div class="row mb-3">
-  </div>
+    <div class="col">
+      <label>*Nome:</label>
+      <input type="text" class="form-control" formControlName="nome" placeholder="Digite seu nome aqui." />
+      <div class="text-danger" *ngIf="formValidate['nome'].touched && formValidate['nome'].invalid">
+        <span *ngIf="formValidate['nome'].errors && formValidate['nome'].errors['required']">
+          <p>Nome obrigatório!</p>
+        </span>
+      </div>
+    </div>
+    <div class="col">
+      <label>*Nome do usuário:</label>
+      <input type="text" class="form-control" formControlName="login" placeholder="Digite seu nome de usuario." />
+      <div class="text-danger" *ngIf="formValidate['login'].touched && formValidate['login'].invalid">
+        <span *ngIf="formValidate['login'].errors && formValidate['login'].errors['required']">
+          <p>Usuário obrigatório!</p>
+        </span>
+      </div>
+    </div>
+    <div class="col">
+      <label>Telefone:</label>
+      <input type="tel" pattern="[0-9]*" class="form-control" formControlName="telefone"
+        placeholder="Digite seu telefone" />
+    </div>
+    <div class="col">
+      <label>*E-mail de acesso:</label>
+      <input type="text" class="form-control" formControlName="email" placeholder="Digite seu e-mail aqui." />
+      <div class="text-danger" *ngIf="formValidate['email'].touched && formValidate['email'].invalid">
+        <span *ngIf="formValidate['email'].errors && formValidate['email'].errors['email']">
+          <p>Por favor, digite um e-mail válido!</p>
+        </span>
+        <span *ngIf="formValidate['email'].errors && formValidate['email'].errors['required']">
+          <p>Campo de e-mail obrigatório!</p>
+        </span>
+      </div>
+    </div>
+    <div class="col">
+      <label>*Senha de acesso:</label>
+      <input type="password" class="form-control" formControlName="senha" placeholder="Digite sua senha aqui." />
+      <div class="text-danger" *ngIf="formValidate['senha'].touched && formValidate['senha'].invalid">
+        <span *ngIf="formValidate['senha'].errors && formValidate['senha'].errors['required']">
+          <p>Por favor, digite uma senha!</p>
+        </span>
+        <span *ngIf="formValidate['senha'].errors && formValidate['senha'].errors['minlength']">
+          <p>Por favor, digite uma senha com no mínimo 8 caracteres!</p>
+        </span>
+      </div>
+    </div>
+    <div class="col">
+      <label>Confirme sua senha:</label>
+      <input type="password" class="form-control" formControlName="senhaConf" placeholder="Confirme sua senha aqui." />
+      <div class="text-danger" *ngIf="formValidate['senhaConf'].touched && formValidate['senhaConf'].invalid">
+        <span *ngIf="formValidate['senhaConf'].errors && formValidate['senhaConf'].errors['required']">
+          <p>Por favor, digite uma senha!</p>
+        </span>
+        <span *ngIf="formValidate['senhaConf'].errors && formValidate['senhaConf'].errors['minlength']">
+          <p>Por favor, digite uma senha com no mínimo 8 caracteres!</p>
+        </span>
+      </div>
+    </div>
+    <div class="row mb-3">
+    </div>
 
-  <div class="col">
-    <button class="btn btn-success">
-      Realizar Cadastro
-    </button>
+    <div class="col">
+      <button type="submit" class="btn btn-primary mt-4" [disabled]="formCreate.invalid">
+        Realizar Cadastro
+      </button>
+    </div>
   </div>
-</div>
 </form>

@@ -1,4 +1,4 @@
-import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule,
   ReactiveFormsModule,
-  FormsModule],
+  FormsModule
+  ],
   templateUrl: './user-create.component.html',
   styleUrl: './user-create.component.css'
 })
@@ -15,15 +16,19 @@ export class UserCreateComponent {
 
 
   formCreate = new FormGroup({
-    nome : new FormControl(''),
-    login : new FormControl(''),
-    telefone : new FormControl(''),
-    email : new FormControl(''),
-    senha : new FormControl(''),
-    senhaConf : new FormControl(''),
+    nome : new FormControl('', [Validators.required]),
+    login : new FormControl('', [Validators.required]),
+    telefone : new FormControl('', [Validators.required]),
+    email : new FormControl('', [Validators.required, Validators.email]),
+    senha : new FormControl('', [Validators.required, Validators.minLength(8)]),
+    senhaConf : new FormControl('', [Validators.required, Validators.minLength(8)]),
   }
 
   );
+
+  get formValidate() {
+    return this.formCreate.controls;
+  }
 
   onSubmit() {
     console.log(this.formCreate.value)
