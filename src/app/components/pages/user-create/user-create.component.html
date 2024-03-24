@@ -30,7 +30,7 @@
     </div>
     <div class="col">
       <label>*E-mail de acesso:</label>
-      <input type="text" class="form-control" formControlName="email" placeholder="Digite seu e-mail aqui." />
+      <input type="email" class="form-control" formControlName="email" placeholder="Digite seu e-mail aqui." />
       <div class="text-danger" *ngIf="formValidate['email'].touched && formValidate['email'].invalid">
         <span *ngIf="formValidate['email'].errors && formValidate['email'].errors['email']">
           <p>Por favor, digite um e-mail válido!</p>
